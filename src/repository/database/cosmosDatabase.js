@@ -138,17 +138,6 @@ const bulkDeleteParcelsFromCosmos = async (containerName, customer_id, authorize
                     throw error;
                 }
             }
-
-            // // Perform bulk delete operation
-            // const response = await container.items.bulk(operations);
-
-            // // Check for errors
-            // const errors = response.filter((res) => res.statusCode !== 204);
-            // if (errors.length > 0) {
-            //     console.error("Errors during bulk delete:", errors);
-            // } else {
-            //     console.log(`Deleted ${chunk.length} items successfully.`);
-            // }
         }
 
         console.log("Bulk delete operation completed.");
