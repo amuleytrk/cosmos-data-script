@@ -14,7 +14,7 @@
   "dependencies": {
     "@azure/cosmos": "^4.2.0",
     "body-parser": "^1.20.2",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mssql": "^11.0.1",
     "node-cache": "^5.1.2"

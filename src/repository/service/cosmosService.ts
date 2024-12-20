@@ -6,6 +6,7 @@ import {
 } from '../../utils/dateTimeUtils';
 import { fetchRandomFacility } from '../../utils/facilityUtils';
 import cacheService from './cacheService';
+import  { bulkInsertIntoCosmos, bulkDeleteParcelsFromCosmos } from '../database/cosmosDatabase';
 
 
 export class CosmosService {
@@ -74,10 +75,15 @@ export class CosmosService {
                 insertData.push(data);
             }
 
-            console.log(insertData);
+            await bulkInsertIntoCosmos(insertData, process.env.PARCELS_CONTAINER);
+            console.log(`Successfully created bulk cosmos entries for ${customer_id} and ${authorized_group}`);
         } catch (err: any) {
             console.log(`Error in creating bulk cosmos entries for ${customer_id} and ${authorized_group}: ${err.message}`);
             throw err;
         }
+    }
+
+    async deleteParcelsBulkService(customer_id: string, authorized_group: string) {
+        await bulkDeleteParcelsFromCosmos(process.env.PARCELS_CONTAINER, customer_id, authorized_group, "bulk_parcels_insertion@trackonomy.com");
     }
 }
